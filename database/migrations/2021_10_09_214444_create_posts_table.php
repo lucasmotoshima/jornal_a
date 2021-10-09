@@ -22,7 +22,7 @@ class CreatePostsTable extends Migration
             $table->string('slug');
             $table->string('summary');
             $table->enum('published', ['1', '0']);
-            $table->timestamps('published_at');
+            $table->dateTime('published_at');
             $table->string('content');
             $table->timestamps();
         });

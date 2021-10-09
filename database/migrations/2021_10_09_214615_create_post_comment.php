@@ -16,11 +16,11 @@ class CreatePostComment extends Migration
         Schema::create('post_comment', function (Blueprint $table) {
             $table->id();
             $table->bigInteger('post_id');
-            $table->bigInteger('parent_id');
+            $table->bigInteger('parent_id')->nullable();
             $table->string('title');
             $table->enum('published', ['1', '0']);
-            $table->timestamps('published_at');
-            $table->string('content');
+            $table->dateTime('published_at');
+            $table->string('content')->nullable();
         });
     }
 
