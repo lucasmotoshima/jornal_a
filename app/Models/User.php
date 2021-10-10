@@ -9,10 +9,12 @@ namespace App\Models;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Foundation\Auth\User as Authenticatable;
 
 /**
+ *
  * Class User
- * 
+ *
  * @property int $id
  * @property int|null $role_id
  * @property string $name
@@ -24,13 +26,13 @@ use Illuminate\Database\Eloquent\Model;
  * @property string|null $settings
  * @property Carbon|null $created_at
  * @property Carbon|null $updated_at
- * 
+ *
  * @property Role|null $role
  * @property Collection|Role[] $roles
  *
  * @package App\Models
  */
-class User extends Model
+class User extends Authenticatable
 {
 	protected $table = 'users';
 
