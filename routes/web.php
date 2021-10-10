@@ -22,7 +22,10 @@ Route::get('/', function () {
 Route::group(['prefix' => 'admin'], function () {
     Voyager::routes();
 
-    Route::middleware('auth:web,admin')->get('/', 'MainController@index')->name('home');
+    Route::middleware('auth:admin')->any('/', [MainController::class],'index')->name('home');
+
+
+
     //Route::namespace('admin')->group(function () {
         // Controllers Within The "App\Http\Controllers\Admin" Namespace
         //Route::group(['middleware' => 'admin.user'], function () {
@@ -34,3 +37,7 @@ Route::group(['prefix' => 'admin'], function () {
         //});
     //});
 });
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
