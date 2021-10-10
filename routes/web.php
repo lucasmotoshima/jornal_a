@@ -20,4 +20,14 @@ Route::get('/', function () {
 
 Route::group(['prefix' => 'admin'], function () {
     Voyager::routes();
+
+    //Route::namespace('admin')->group(function () {
+        // Controllers Within The "App\Http\Controllers\Admin" Namespace
+        //Route::group(['middleware' => 'admin.user'], function () {
+            Route::get('/', function () {
+                // Matches The "/admin/room" URL
+                return "Test";
+            });
+        //});
+    //});
 });
