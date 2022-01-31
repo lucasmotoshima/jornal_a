@@ -13,31 +13,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
-
-
+Route::get('/', [App\Http\Controllers\MainController::class, 'index'])->name('home');
 Route::group(['prefix' => 'admin'], function () {
-    Voyager::routes();
-
-    Route::middleware('auth:admin')->any('/', [MainController::class],'index')->name('home');
-
-
-
-    //Route::namespace('admin')->group(function () {
-        // Controllers Within The "App\Http\Controllers\Admin" Namespace
-        //Route::group(['middleware' => 'admin.user'], function () {
-            //Route::get('/', function () {
-                // Matches The "/admin/room" URL
-                //return "Test";
-            //});
-            //Route::middleware('auth:web,admin')->get('/dashboard', 'CompanyDashboard@dashboard');
-        //});
-    //});
+    Auth::routes();
 });
-
-Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
